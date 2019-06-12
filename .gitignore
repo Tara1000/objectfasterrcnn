@@ -1,0 +1,9 @@
+*.so
+*.pyc
+*.tgz
+*.tar.tgz
+output
+tensorboard
+lib/build
+data/coco
+data/imagenet_weights
