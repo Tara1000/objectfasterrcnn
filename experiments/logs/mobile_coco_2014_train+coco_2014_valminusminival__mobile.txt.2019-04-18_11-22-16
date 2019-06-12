@@ -1,0 +1,18 @@
++ echo Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-04-18_11-22-16
+Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-04-18_11-22-16
++ set +x
++ '[' '!' -f output/mobile/coco_2014_train+coco_2014_valminusminival/default/mobile_faster_rcnn_iter_490000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/mobile.ckpt --imdb coco_2014_train+coco_2014_valminusminival --imdbval coco_2014_minival --iters 490000 --cfg experiments/cfgs/mobile.yml --net mobile --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[350000]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/mobile.yml', imdb_name='coco_2014_train+coco_2014_valminusminival', imdbval_name='coco_2014_minival', max_iters=490000, net='mobile', set_cfgs=['ANCHOR_SCALES', '[4,8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[350000]'], tag=None, weight='data/imagenet_weights/mobile.ckpt')
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 95, in <module>
+    cfg_from_file(args.cfg_file)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/config.py", line 360, in cfg_from_file
+    import yaml
+ModuleNotFoundError: No module named 'yaml'
+Command exited with non-zero status 1
+3.34user 0.94system 0:03.89elapsed 110%CPU (0avgtext+0avgdata 298644maxresident)k
+164760inputs+384outputs (410major+61624minor)pagefaults 0swaps

@@ -1,0 +1,212 @@
++ echo Logging output to experiments/logs/test_mobileenh_coco_2014_train+coco_2014_valminusminival_.txt.2019-06-10_13-49-00
+Logging output to experiments/logs/test_mobileenh_coco_2014_train+coco_2014_valminusminival_.txt.2019-06-10_13-49-00
++ set +x
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/test_net.py --imdb coco_2014_minival --model output/mobileenh/coco_2014_train+coco_2014_valminusminival/default/mobileenh_faster_rcnn_iter_490000.ckpt --cfg experiments/cfgs/mobileenh.yml --net mobileenh --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/mobileenh.yml', comp_mode=False, imdb_name='coco_2014_minival', max_per_image=100, model='output/mobileenh/coco_2014_train+coco_2014_valminusminival/default/mobileenh_faster_rcnn_iter_490000.ckpt', net='mobileenh', set_cfgs=['ANCHOR_SCALES', '[4,8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]'], tag='')
+/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/config.py:362: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [4, 8, 16, 32],
+ 'DATA_DIR': '/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/data',
+ 'EXP_DIR': 'mobileenh',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'mobileenh_faster_rcnn',
+           'STEPSIZE': [30000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+loading annotations into memory...
+Done (t=0.44s)
+creating index...
+index created!
+2019-06-10 13:49:03.545058: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2019-06-10 13:49:03.644298: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-06-10 13:49:03.644950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6705
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.28GiB
+2019-06-10 13:49:03.644968: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-06-10 13:49:03.992345: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-06-10 13:49:03.992378: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-06-10 13:49:03.992385: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-06-10 13:49:03.992865: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 9942 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+Loading model check point from output/mobileenh/coco_2014_train+coco_2014_valminusminival/default/mobileenh_faster_rcnn_iter_490000.ckpt
+Traceback (most recent call last):
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1334, in _do_call
+    return fn(*args)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1319, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1407, in _call_tf_sessionrun
+    run_metadata)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Assign requires shapes of both tensors to match. lhs shape= [3,3,1024,512] rhs shape= [3,3,512,512]
+	 [[{{node save/Assign_184}} = Assign[T=DT_FLOAT, _class=["loc:@MobilenetV1enh/rpn_conv/3x3/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](MobilenetV1enh/rpn_conv/3x3/weights, save/RestoreV2/_369)]]
+	 [[{{node save/RestoreV2/_34}} = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_39_save/RestoreV2", _device="/job:localhost/replica:0/task:0/device:CPU:0"](save/RestoreV2:17)]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1546, in restore
+    {self.saver_def.filename_tensor_name: save_path})
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 929, in run
+    run_metadata_ptr)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1152, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1328, in _do_run
+    run_metadata)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1348, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Assign requires shapes of both tensors to match. lhs shape= [3,3,1024,512] rhs shape= [3,3,512,512]
+	 [[node save/Assign_184 (defined at ./tools/test_net.py:117)  = Assign[T=DT_FLOAT, _class=["loc:@MobilenetV1enh/rpn_conv/3x3/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](MobilenetV1enh/rpn_conv/3x3/weights, save/RestoreV2/_369)]]
+	 [[{{node save/RestoreV2/_34}} = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_39_save/RestoreV2", _device="/job:localhost/replica:0/task:0/device:CPU:0"](save/RestoreV2:17)]]
+
+Caused by op 'save/Assign_184', defined at:
+  File "./tools/test_net.py", line 117, in <module>
+    saver = tf.train.Saver()
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1102, in __init__
+    self.build()
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1114, in build
+    self._build(self._filename, build_save=True, build_restore=True)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1151, in _build
+    build_save=build_save, build_restore=build_restore)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 795, in _build_internal
+    restore_sequentially, reshape)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 428, in _AddRestoreOps
+    assign_ops.append(saveable.restore(saveable_tensors, shapes))
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 119, in restore
+    self.op.get_shape().is_fully_defined())
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/state_ops.py", line 221, in assign
+    validate_shape=validate_shape)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/gen_state_ops.py", line 61, in assign
+    use_locking=use_locking, name=name)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 488, in new_func
+    return func(*args, **kwargs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3274, in create_op
+    op_def=op_def)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1770, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+InvalidArgumentError (see above for traceback): Assign requires shapes of both tensors to match. lhs shape= [3,3,1024,512] rhs shape= [3,3,512,512]
+	 [[node save/Assign_184 (defined at ./tools/test_net.py:117)  = Assign[T=DT_FLOAT, _class=["loc:@MobilenetV1enh/rpn_conv/3x3/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](MobilenetV1enh/rpn_conv/3x3/weights, save/RestoreV2/_369)]]
+	 [[{{node save/RestoreV2/_34}} = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_39_save/RestoreV2", _device="/job:localhost/replica:0/task:0/device:CPU:0"](save/RestoreV2:17)]]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./tools/test_net.py", line 118, in <module>
+    saver.restore(sess, args.model)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1582, in restore
+    err, "a mismatch between the current graph and the graph")
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Restoring from checkpoint failed. This is most likely due to a mismatch between the current graph and the graph from the checkpoint. Please ensure that you have not altered the graph expected based on the checkpoint. Original error:
+
+Assign requires shapes of both tensors to match. lhs shape= [3,3,1024,512] rhs shape= [3,3,512,512]
+	 [[node save/Assign_184 (defined at ./tools/test_net.py:117)  = Assign[T=DT_FLOAT, _class=["loc:@MobilenetV1enh/rpn_conv/3x3/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](MobilenetV1enh/rpn_conv/3x3/weights, save/RestoreV2/_369)]]
+	 [[{{node save/RestoreV2/_34}} = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_39_save/RestoreV2", _device="/job:localhost/replica:0/task:0/device:CPU:0"](save/RestoreV2:17)]]
+
+Caused by op 'save/Assign_184', defined at:
+  File "./tools/test_net.py", line 117, in <module>
+    saver = tf.train.Saver()
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1102, in __init__
+    self.build()
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1114, in build
+    self._build(self._filename, build_save=True, build_restore=True)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1151, in _build
+    build_save=build_save, build_restore=build_restore)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 795, in _build_internal
+    restore_sequentially, reshape)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 428, in _AddRestoreOps
+    assign_ops.append(saveable.restore(saveable_tensors, shapes))
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 119, in restore
+    self.op.get_shape().is_fully_defined())
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/state_ops.py", line 221, in assign
+    validate_shape=validate_shape)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/gen_state_ops.py", line 61, in assign
+    use_locking=use_locking, name=name)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 488, in new_func
+    return func(*args, **kwargs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3274, in create_op
+    op_def=op_def)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1770, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+InvalidArgumentError (see above for traceback): Restoring from checkpoint failed. This is most likely due to a mismatch between the current graph and the graph from the checkpoint. Please ensure that you have not altered the graph expected based on the checkpoint. Original error:
+
+Assign requires shapes of both tensors to match. lhs shape= [3,3,1024,512] rhs shape= [3,3,512,512]
+	 [[node save/Assign_184 (defined at ./tools/test_net.py:117)  = Assign[T=DT_FLOAT, _class=["loc:@MobilenetV1enh/rpn_conv/3x3/weights"], use_locking=true, validate_shape=true, _device="/job:localhost/replica:0/task:0/device:GPU:0"](MobilenetV1enh/rpn_conv/3x3/weights, save/RestoreV2/_369)]]
+	 [[{{node save/RestoreV2/_34}} = _Send[T=DT_FLOAT, client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_39_save/RestoreV2", _device="/job:localhost/replica:0/task:0/device:CPU:0"](save/RestoreV2:17)]]
+
+Command exited with non-zero status 1
+5.47user 0.77system 0:05.76elapsed 108%CPU (0avgtext+0avgdata 1021604maxresident)k
+0inputs+16outputs (0major+191102minor)pagefaults 0swaps

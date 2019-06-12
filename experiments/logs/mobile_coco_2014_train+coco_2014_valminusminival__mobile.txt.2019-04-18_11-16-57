@@ -1,0 +1,18 @@
++ echo Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-04-18_11-16-57
+Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-04-18_11-16-57
++ set +x
++ '[' '!' -f output/mobile/coco_2014_train+coco_2014_valminusminival/default/mobile_faster_rcnn_iter_490000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/mobile.ckpt --imdb coco_2014_train+coco_2014_valminusminival --imdbval coco_2014_minival --iters 490000 --cfg experiments/cfgs/mobile.yml --net mobile --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[350000]'
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 11, in <module>
+    from model.train_val import get_training_roidb, train_net
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 11, in <module>
+    import roi_data_layer.roidb as rdl_roidb
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/roi_data_layer/roidb.py", line 17, in <module>
+    import PIL
+ModuleNotFoundError: No module named 'PIL'
+Command exited with non-zero status 1
+1.13user 0.90system 0:01.69elapsed 120%CPU (0avgtext+0avgdata 197856maxresident)k
+302024inputs+56outputs (998major+41953minor)pagefaults 0swaps

@@ -1,0 +1,60 @@
++ echo Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-05-03_21-23-37
+Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-05-03_21-23-37
++ set +x
++ '[' '!' -f output/mobile/coco_2014_train+coco_2014_valminusminival/default/mobile_faster_rcnn_iter_490000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/mobile.ckpt --imdb coco_2014_train+coco_2014_valminusminival --imdbval coco_2014_minival --iters 490000 --cfg experiments/cfgs/mobile.yml --net mobile --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[350000]'
+Traceback (most recent call last):
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/imp.py", line 243, in load_module
+    return load_dynamic(name, filename, file)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/imp.py", line 343, in load_dynamic
+    return _load(spec)
+ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 11, in <module>
+    from model.train_val import get_training_roidb, train_net
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 11, in <module>
+    import roi_data_layer.roidb as rdl_roidb
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/roi_data_layer/roidb.py", line 15, in <module>
+    from model.bbox_transform import bbox_transform
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/bbox_transform.py", line 12, in <module>
+    import tensorflow as tf
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/__init__.py", line 24, in <module>
+    from tensorflow.python import pywrap_tensorflow  # pylint: disable=unused-import
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/__init__.py", line 49, in <module>
+    from tensorflow.python import pywrap_tensorflow
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 74, in <module>
+    raise ImportError(msg)
+ImportError: Traceback (most recent call last):
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/imp.py", line 243, in load_module
+    return load_dynamic(name, filename, file)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/imp.py", line 343, in load_dynamic
+    return _load(spec)
+ImportError: libcublas.so.9.0: cannot open shared object file: No such file or directory
+
+
+Failed to load the native TensorFlow runtime.
+
+See https://www.tensorflow.org/install/install_sources#common_installation_problems
+
+for some common reasons and solutions.  Include the entire stack trace
+above this error message when asking for help.
+Command exited with non-zero status 1
+0.27user 0.36system 0:00.16elapsed 396%CPU (0avgtext+0avgdata 29176maxresident)k
+16inputs+0outputs (0major+4508minor)pagefaults 0swaps

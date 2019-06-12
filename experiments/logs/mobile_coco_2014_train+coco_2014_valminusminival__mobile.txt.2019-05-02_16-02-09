@@ -1,0 +1,163 @@
++ echo Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-05-02_16-02-09
+Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-05-02_16-02-09
++ set +x
++ '[' '!' -f output/mobile/coco_2014_train+coco_2014_valminusminival/default/mobile_faster_rcnn_iter_490000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/mobile.ckpt --imdb coco_2014_train+coco_2014_valminusminival --imdbval coco_2014_minival --iters 490000 --cfg experiments/cfgs/mobile.yml --net mobile --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[350000]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/mobile.yml', imdb_name='coco_2014_train+coco_2014_valminusminival', imdbval_name='coco_2014_minival', max_iters=490000, net='mobile', set_cfgs=['ANCHOR_SCALES', '[4,8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[350000]'], tag=None, weight='data/imagenet_weights/mobile.ckpt')
+/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/config.py:362: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [4, 8, 16, 32],
+ 'DATA_DIR': '/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data',
+ 'EXP_DIR': 'mobile',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'mobile_faster_rcnn',
+           'STEPSIZE': [350000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+loading annotations into memory...
+Done (t=7.89s)
+creating index...
+index created!
+Loaded dataset `coco_2014_train` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+coco_2014_train gt roidb loaded from /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_train_gt_roidb.pkl
+done
+Preparing training data...
+done
+loading annotations into memory...
+Done (t=4.97s)
+creating index...
+index created!
+Loaded dataset `coco_2014_valminusminival` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+coco_2014_valminusminival gt roidb loaded from /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_valminusminival_gt_roidb.pkl
+done
+Preparing training data...
+done
+loading annotations into memory...
+Done (t=3.78s)
+creating index...
+index created!
+236574 roidb entries
+Output will be saved to `/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/output/mobile/coco_2014_train+coco_2014_valminusminival/default`
+TensorFlow summaries will be saved to `/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tensorboard/mobile/coco_2014_train+coco_2014_valminusminival/default`
+loading annotations into memory...
+Done (t=0.35s)
+creating index...
+index created!
+Loaded dataset `coco_2014_minival` for training
+Set proposal method: gt
+Preparing training data...
+coco_2014_minival gt roidb loaded from /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_minival_gt_roidb.pkl
+done
+loading annotations into memory...
+Done (t=0.33s)
+creating index...
+index created!
+5000 validation roidb entries
+Filtered 2042 roidb entries: 236574 -> 234532
+Filtered 48 roidb entries: 5000 -> 4952
+2019-05-02 16:02:49.611906: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX
+2019-05-02 16:02:49.735964: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:964] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-05-02 16:02:49.736596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1432] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6705
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.19GiB
+2019-05-02 16:02:49.736612: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1511] Adding visible gpu devices: 0
+2019-05-02 16:02:49.938346: I tensorflow/core/common_runtime/gpu/gpu_device.cc:982] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-05-02 16:02:49.938381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:988]      0 
+2019-05-02 16:02:49.938388: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1001] 0:   N 
+2019-05-02 16:02:49.938857: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 9849 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+Solving...
+/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:112: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Loading initial model weights from data/imagenet_weights/mobile.ckpt
+2019-05-02 16:02:53.051877: W tensorflow/core/util/tensor_slice_reader.cc:95] Could not open data/imagenet_weights/mobile.ckpt: Data loss: not an sstable (bad magic number): perhaps your file is in a different file format and you need to use a different restore operator?
+Unable to open table file data/imagenet_weights/mobile.ckpt: Data loss: not an sstable (bad magic number): perhaps your file is in a different file format and you need to use a different restore operator?
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 139, in <module>
+    max_iters=args.max_iters)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 377, in train_net
+    sw.train_model(sess, max_iters)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 255, in train_model
+    rate, last_snapshot_iter, stepsizes, np_paths, ss_paths = self.initialize(sess)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 188, in initialize
+    variables_to_restore = self.net.get_variables_to_restore(variables, var_keep_dic)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/mobilenet_v1.py", line 260, in get_variables_to_restore
+    if v.name.split(':')[0] in var_keep_dic:
+TypeError: argument of type 'NoneType' is not iterable
+Command exited with non-zero status 1
+42.56user 3.10system 0:44.63elapsed 102%CPU (0avgtext+0avgdata 2765416maxresident)k
+0inputs+2904outputs (0major+1325818minor)pagefaults 0swaps

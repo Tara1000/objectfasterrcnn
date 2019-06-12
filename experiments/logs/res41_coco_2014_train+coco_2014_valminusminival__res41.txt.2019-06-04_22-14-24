@@ -1,0 +1,140 @@
++ echo Logging output to experiments/logs/res41_coco_2014_train+coco_2014_valminusminival__res41.txt.2019-06-04_22-14-24
+Logging output to experiments/logs/res41_coco_2014_train+coco_2014_valminusminival__res41.txt.2019-06-04_22-14-24
++ set +x
++ '[' '!' -f output/res41/coco_2014_train+coco_2014_valminusminival/default/res41_faster_rcnn_iter_490000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/res41.ckpt --imdb coco_2014_train+coco_2014_valminusminival --imdbval coco_2014_minival --iters 490000 --cfg experiments/cfgs/res41.yml --net res41 --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[350000]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/res41.yml', imdb_name='coco_2014_train+coco_2014_valminusminival', imdbval_name='coco_2014_minival', max_iters=490000, net='res41', set_cfgs=['ANCHOR_SCALES', '[4,8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[350000]'], tag=None, weight='data/imagenet_weights/res41.ckpt')
+/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/config.py:362: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [4, 8, 16, 32],
+ 'DATA_DIR': '/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/data',
+ 'EXP_DIR': 'res41',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res41_faster_rcnn',
+           'STEPSIZE': [350000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+loading annotations into memory...
+Done (t=8.28s)
+creating index...
+index created!
+Loaded dataset `coco_2014_train` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+coco_2014_train gt roidb loaded from /media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_train_gt_roidb.pkl
+done
+Preparing training data...
+done
+loading annotations into memory...
+Done (t=4.94s)
+creating index...
+index created!
+Loaded dataset `coco_2014_valminusminival` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+coco_2014_valminusminival gt roidb loaded from /media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_valminusminival_gt_roidb.pkl
+done
+Preparing training data...
+done
+loading annotations into memory...
+Done (t=3.83s)
+creating index...
+index created!
+236574 roidb entries
+Output will be saved to `/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/output/res41/coco_2014_train+coco_2014_valminusminival/default`
+TensorFlow summaries will be saved to `/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tensorboard/res41/coco_2014_train+coco_2014_valminusminival/default`
+loading annotations into memory...
+Done (t=0.36s)
+creating index...
+index created!
+Loaded dataset `coco_2014_minival` for training
+Set proposal method: gt
+Preparing training data...
+coco_2014_minival gt roidb loaded from /media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_minival_gt_roidb.pkl
+done
+loading annotations into memory...
+Done (t=0.33s)
+creating index...
+index created!
+5000 validation roidb entries
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 127, in <module>
+    net = resnetv1(num_layers=41)
+  File "/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/resnet_v1.py", line 53, in __init__
+    self._decide_blocks()
+  File "/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/resnet_v1.py", line 159, in _decide_blocks
+    raise NotImplementedError
+NotImplementedError
+Command exited with non-zero status 1
+37.47user 2.57system 0:39.57elapsed 101%CPU (0avgtext+0avgdata 2760340maxresident)k
+0inputs+16outputs (0major+1257661minor)pagefaults 0swaps

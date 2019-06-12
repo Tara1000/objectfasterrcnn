@@ -1,0 +1,412 @@
++ echo Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-05-03_21-33-22
+Logging output to experiments/logs/mobile_coco_2014_train+coco_2014_valminusminival__mobile.txt.2019-05-03_21-33-22
++ set +x
++ '[' '!' -f output/mobile/coco_2014_train+coco_2014_valminusminival/default/mobile_faster_rcnn_iter_490000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/mobile.ckpt --imdb coco_2014_train+coco_2014_valminusminival --imdbval coco_2014_minival --iters 490000 --cfg experiments/cfgs/mobile.yml --net mobile --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[350000]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/mobile.yml', imdb_name='coco_2014_train+coco_2014_valminusminival', imdbval_name='coco_2014_minival', max_iters=490000, net='mobile', set_cfgs=['ANCHOR_SCALES', '[4,8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[350000]'], tag=None, weight='data/imagenet_weights/mobile.ckpt')
+/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/config.py:362: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [4, 8, 16, 32],
+ 'DATA_DIR': '/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data',
+ 'EXP_DIR': 'mobile',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'mobile_faster_rcnn',
+           'STEPSIZE': [350000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_E2E_TF': True,
+ 'USE_GPU_NMS': True}
+loading annotations into memory...
+Done (t=7.89s)
+creating index...
+index created!
+Loaded dataset `coco_2014_train` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+coco_2014_train gt roidb loaded from /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_train_gt_roidb.pkl
+done
+Preparing training data...
+done
+loading annotations into memory...
+Done (t=4.97s)
+creating index...
+index created!
+Loaded dataset `coco_2014_valminusminival` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+coco_2014_valminusminival gt roidb loaded from /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_valminusminival_gt_roidb.pkl
+done
+Preparing training data...
+done
+loading annotations into memory...
+Done (t=4.40s)
+creating index...
+index created!
+236574 roidb entries
+Output will be saved to `/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/output/mobile/coco_2014_train+coco_2014_valminusminival/default`
+TensorFlow summaries will be saved to `/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tensorboard/mobile/coco_2014_train+coco_2014_valminusminival/default`
+loading annotations into memory...
+Done (t=0.35s)
+creating index...
+index created!
+Loaded dataset `coco_2014_minival` for training
+Set proposal method: gt
+Preparing training data...
+coco_2014_minival gt roidb loaded from /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/data/cache/coco_2014_minival_gt_roidb.pkl
+done
+loading annotations into memory...
+Done (t=1.22s)
+creating index...
+index created!
+5000 validation roidb entries
+Filtered 2042 roidb entries: 236574 -> 234532
+Filtered 48 roidb entries: 5000 -> 4952
+2019-05-03 21:34:01.420174: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:998] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2019-05-03 21:34:01.421078: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x5580e45c9560 executing computations on platform CUDA. Devices:
+2019-05-03 21:34:01.421110: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): GeForce GTX 1080 Ti, Compute Capability 6.1
+2019-05-03 21:34:01.441729: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 3410005000 Hz
+2019-05-03 21:34:01.442332: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x5580eb54a0f0 executing computations on platform Host. Devices:
+2019-05-03 21:34:01.442373: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+2019-05-03 21:34:01.443189: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1433] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6705
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.14GiB
+2019-05-03 21:34:01.443212: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1512] Adding visible gpu devices: 0
+2019-05-03 21:34:01.444570: I tensorflow/core/common_runtime/gpu/gpu_device.cc:984] Device interconnect StreamExecutor with strength 1 edge matrix:
+2019-05-03 21:34:01.444587: I tensorflow/core/common_runtime/gpu/gpu_device.cc:990]      0 
+2019-05-03 21:34:01.444596: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1003] 0:   N 
+2019-05-03 21:34:01.445197: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1115] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 9863 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+Solving...
+WARNING:tensorflow:From /home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py:263: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py:213: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/layer_utils/proposal_layer.py:75: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+WARNING:tensorflow:From /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py:168: py_func (from tensorflow.python.ops.script_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+tf.py_func is deprecated in TF V2. Instead, use
+    tf.py_function, which takes a python function which manipulates tf eager
+    tensors instead of numpy arrays. It's easy to convert a tf eager tensor to
+    an ndarray (just call tensor.numpy()) but having access to eager tensors
+    means `tf.py_function`s can use accelerators such as GPUs as well as
+    being differentiable using a gradient tape.
+    
+/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/gradients_impl.py:110: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Loading initial model weights from data/imagenet_weights/mobile.ckpt
+Variables restored: MobilenetV1/Conv2d_0/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_0/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_0/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_0/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_1_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_1_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_1_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_1_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_1_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_1_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_1_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_1_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_1_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_1_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_2_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_2_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_2_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_2_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_2_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_2_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_2_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_2_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_2_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_2_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_3_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_3_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_3_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_3_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_3_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_3_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_3_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_3_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_3_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_3_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_4_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_4_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_4_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_4_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_4_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_4_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_4_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_4_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_4_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_4_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_5_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_5_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_5_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_5_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_5_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_5_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_5_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_5_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_5_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_5_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_6_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_6_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_6_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_6_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_6_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_6_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_6_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_6_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_6_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_6_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_7_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_7_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_7_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_7_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_7_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_7_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_7_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_7_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_7_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_7_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_8_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_8_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_8_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_8_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_8_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_8_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_8_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_8_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_8_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_8_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_9_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_9_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_9_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_9_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_9_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_9_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_9_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_9_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_9_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_9_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_10_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_10_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_10_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_10_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_10_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_10_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_10_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_10_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_10_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_10_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_11_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_11_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_11_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_11_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_11_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_11_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_11_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_11_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_11_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_11_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_12_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_12_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_12_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_12_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_12_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_12_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_12_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_12_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_12_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_12_pointwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_13_depthwise/depthwise_weights:0
+Variables restored: MobilenetV1/Conv2d_13_depthwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_13_depthwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_13_depthwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_13_depthwise/BatchNorm/moving_variance:0
+Variables restored: MobilenetV1/Conv2d_13_pointwise/weights:0
+Variables restored: MobilenetV1/Conv2d_13_pointwise/BatchNorm/gamma:0
+Variables restored: MobilenetV1/Conv2d_13_pointwise/BatchNorm/beta:0
+Variables restored: MobilenetV1/Conv2d_13_pointwise/BatchNorm/moving_mean:0
+Variables restored: MobilenetV1/Conv2d_13_pointwise/BatchNorm/moving_variance:0
+WARNING:tensorflow:From /home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/training/saver.py:1266: checkpoint_exists (from tensorflow.python.training.checkpoint_management) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use standard file APIs to check for files with this prefix.
+Loaded.
+Fix MobileNet V1 layers..
+Fixed.
+2019-05-03 21:34:04.796798: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_12. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:04.796871: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_14. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:04.796897: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_16. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:04.796923: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_18. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:05.133137: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_12. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:05.133182: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_14. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:05.133200: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_16. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:05.133215: W ./tensorflow/core/grappler/optimizers/graph_optimizer_stage.h:241] Failed to run optimizer ArithmeticOptimizer, stage RemoveStackStridedSliceSameAxis node MobilenetV1_2/rois/strided_slice_18. Error: Pack node (MobilenetV1_2/rois/stack) axis attribute is out of bounds: 1
+2019-05-03 21:34:05.246153: I tensorflow/stream_executor/dso_loader.cc:152] successfully opened CUDA library libcublas.so.10.0 locally
+2019-05-03 21:34:05.892456: E tensorflow/stream_executor/cuda/cuda_dnn.cc:324] Loaded runtime CuDNN library: 7.3.1 but source was compiled with: 7.4.2.  CuDNN library major and minor version needs to match or have higher minor version in case of CuDNN 7.0 or later version. If using a binary install, upgrade your CuDNN library.  If building from sources, make sure the library loaded at runtime is compatible with the version specified during compile configuration.
+2019-05-03 21:34:05.894267: E tensorflow/stream_executor/cuda/cuda_dnn.cc:324] Loaded runtime CuDNN library: 7.3.1 but source was compiled with: 7.4.2.  CuDNN library major and minor version needs to match or have higher minor version in case of CuDNN 7.0 or later version. If using a binary install, upgrade your CuDNN library.  If building from sources, make sure the library loaded at runtime is compatible with the version specified during compile configuration.
+Traceback (most recent call last):
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1334, in _do_call
+    return fn(*args)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1319, in _run_fn
+    options, feed_dict, fetch_list, target_list, run_metadata)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1407, in _call_tf_sessionrun
+    run_metadata)
+tensorflow.python.framework.errors_impl.UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.
+	 [[{{node MobilenetV1/Conv2d_0/Conv2D}}]]
+	 [[{{node MobilenetV1_4/cls_prob}}]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 139, in <module>
+    max_iters=args.max_iters)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 377, in train_net
+    sw.train_model(sess, max_iters)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 284, in train_model
+    self.net.train_step_with_summary(sess, blobs, train_op)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py", line 510, in train_step_with_summary
+    feed_dict=feed_dict)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 929, in run
+    run_metadata_ptr)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1152, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1328, in _do_run
+    run_metadata)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1348, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.UnknownError: Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.
+	 [[node MobilenetV1/Conv2d_0/Conv2D (defined at /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/mobilenet_v1.py:152) ]]
+	 [[node MobilenetV1_4/cls_prob (defined at /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py:86) ]]
+
+Caused by op 'MobilenetV1/Conv2d_0/Conv2D', defined at:
+  File "./tools/trainval_net.py", line 139, in <module>
+    max_iters=args.max_iters)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 377, in train_net
+    sw.train_model(sess, max_iters)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 248, in train_model
+    lr, train_op = self.construct_graph(sess)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/train_val.py", line 123, in construct_graph
+    anchor_ratios=cfg.ANCHOR_RATIOS)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py", line 421, in create_architecture
+    rois, cls_prob, bbox_pred = self._build_network(training)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py", line 242, in _build_network
+    net_conv = self._image_to_head(is_training)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/mobilenet_v1.py", line 225, in _image_to_head
+    scope=self._scope)
+  File "/mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/mobilenet_v1.py", line 152, in mobilenet_v1_base
+    scope=end_point)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/contrib/slim/python/slim/nets/resnet_utils.py", line 146, in conv2d_same
+    scope=scope)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/contrib/framework/python/ops/arg_scope.py", line 182, in func_with_args
+    return func(*args, **current_args)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/contrib/layers/python/layers/layers.py", line 1155, in convolution2d
+    conv_dims=2)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/contrib/framework/python/ops/arg_scope.py", line 182, in func_with_args
+    return func(*args, **current_args)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/contrib/layers/python/layers/layers.py", line 1058, in convolution
+    outputs = layer.apply(inputs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/keras/engine/base_layer.py", line 1227, in apply
+    return self.__call__(inputs, *args, **kwargs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/layers/base.py", line 530, in __call__
+    outputs = super(Layer, self).__call__(inputs, *args, **kwargs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/keras/engine/base_layer.py", line 554, in __call__
+    outputs = self.call(inputs, *args, **kwargs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/keras/layers/convolutional.py", line 194, in call
+    outputs = self._convolution_op(inputs, self.kernel)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/nn_ops.py", line 966, in __call__
+    return self.conv_op(inp, filter)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/nn_ops.py", line 591, in __call__
+    return self.call(inp, filter)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/nn_ops.py", line 208, in __call__
+    name=self.name)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/ops/gen_nn_ops.py", line 1026, in conv2d
+    data_format=data_format, dilations=dilations, name=name)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 788, in _apply_op_helper
+    op_def=op_def)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/util/deprecation.py", line 507, in new_func
+    return func(*args, **kwargs)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3300, in create_op
+    op_def=op_def)
+  File "/home/tara/anaconda3/envs/tensorflow_gpuenv/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1801, in __init__
+    self._traceback = tf_stack.extract_stack()
+
+UnknownError (see above for traceback): Failed to get convolution algorithm. This is probably because cuDNN failed to initialize, so try looking to see if a warning log message was printed above.
+	 [[node MobilenetV1/Conv2d_0/Conv2D (defined at /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/mobilenet_v1.py:152) ]]
+	 [[node MobilenetV1_4/cls_prob (defined at /mnt/4076e5a6-a1c1-4df7-9f50-5c44f024e366/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/nets/network.py:86) ]]
+
+Command exited with non-zero status 1
+43.14user 3.38system 0:45.04elapsed 103%CPU (0avgtext+0avgdata 2825320maxresident)k
+0inputs+2936outputs (0major+1526601minor)pagefaults 0swaps

@@ -1,0 +1,17 @@
++ echo Logging output to experiments/logs/test_res101_coco_2014_train+coco_2014_valminusminival_.txt.2019-05-14_15-20-18
+Logging output to experiments/logs/test_res101_coco_2014_train+coco_2014_valminusminival_.txt.2019-05-14_15-20-18
++ set +x
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/test_net.py --imdb coco_2014_minival --model output/res101/coco_2014_train+coco_2014_valminusminival/default/res101_faster_rcnn_iter_490000.ckpt --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]'
+Traceback (most recent call last):
+  File "./tools/test_net.py", line 11, in <module>
+    from model.test import test_net
+  File "/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/__init__.py", line 1, in <module>
+    from . import config
+  File "/media/tara/TheNet/tf-faster-rcnn/tf-faster-rcnn-master/tools/../lib/model/config.py", line 9, in <module>
+    from easydict import EasyDict as edict
+ModuleNotFoundError: No module named 'easydict'
+Command exited with non-zero status 1
+0.08user 0.02system 0:00.21elapsed 55%CPU (0avgtext+0avgdata 38900maxresident)k
+50736inputs+40outputs (133major+4959minor)pagefaults 0swaps
