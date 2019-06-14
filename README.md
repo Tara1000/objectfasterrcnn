@@ -6,6 +6,7 @@ More details: [https://github.com/endernewton/tf-faster-rcnn](https://github.com
 COCO 2014 data set can be downloaded from [http://cocodataset.org/#download](http://cocodataset.org/#download)
 
 If you lack pip or conda packages in Anaconda-3 to run the code, see `packagelist.txt` at the google drive for package versions, or setup a virtual environment with the yaml file included in this repository:
+
 `> conda env create -f tfgpuenv.yaml`
 
 `> conda activate tensorflow\_gpuenv`
@@ -32,9 +33,13 @@ In lib folder, proceed to build the project:
 Download ImageNet weights (data) and pre-trained COCO models (output) from Faster-RCNN folder at [https://drive.google.com/open?id=1qlXjT-P6vgZk6NylAo7JeJREKY3jccNV](https://drive.google.com/open?id=1qlXjT-P6vgZk6NylAo7JeJREKY3jccNV) into project root, and clone + build coco API:
 
 `> cd data`
+
 `> git clone https://github.com/pdollar/coco.git`
+
 `> cd coco/PythonAPI`
+
 `> make`
+
 `> cd ..`
 
 In `coco` create symlinks of 'images' and 'annotations' folders from your data set folder to here:
